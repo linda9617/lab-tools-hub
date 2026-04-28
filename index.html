@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lab Tools Hub by ILYH</title>
+<title>ILYH's Lab Magic Hub</title>
 <style>
 :root{--bg:#f0f4f8;--surface:#fff;--border:#d0d7e3;--primary:#1e4d8c;--primary-lt:#e8eef7;--primary-dk:#163a6b;--text:#1a2b3c;--muted:#6b7a8d;--green:#1a7a6e;--green-lt:#e2f5f3}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -86,11 +86,11 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
         </svg>
       </div>
       <div>
-        <h1>Lab Tools Hub</h1>
+        <h1>ILYH's Lab Magic Hub</h1>
         <p class="sub">Biology data processing &amp; automation tools</p>
       </div>
     </div>
-    <span class="author">by ILYH</span>
+    <span class="author">By ILYH</span>
   </div>
 </header>
 
@@ -105,9 +105,9 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
     <div class="cat-chips" id="catChips">
       <button class="chip active" data-cat="all">All</button>
       <button class="chip" data-cat="data">Data</button>
-      <button class="chip" data-cat="plate">Plate</button>
       <button class="chip" data-cat="analysis">Analysis</button>
       <button class="chip" data-cat="automation">Automation</button>
+      <button class="chip" data-cat="debug">Debug</button>
     </div>
   </div>
 
@@ -120,19 +120,19 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 
 </main>
 
-<footer class="copyright">Copyright &copy; 2026 ILYH. All rights reserved.</footer>
+<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
 
 <script>
 // ── Tool definitions ──────────────────────────────────────────────────────────
 const TOOLS = [
   {
     id: 'prism',
-    name: 'Data Easy to Prism',
+    name: 'Easy Data to Prism',
     cat: 'data',
     catLabel: 'Data Conversion',
     desc: 'Convert tabular or matrix data (CSV / Excel) into GraphPad Prism-ready TSV format. Supports XY, Column, Grouped, and Survival table types with live chart preview.',
     tags: ['Prism', 'CSV', 'Excel', 'TSV'],
-    filename: 'Data Easy to Prism.html',
+    filename: 'Easy Data to Prism.html',
     icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="2" width="18" height="18" rx="2.5"/>
       <line x1="2" y1="7.5" x2="20" y2="7.5"/>
@@ -140,15 +140,15 @@ const TOOLS = [
       <line x1="7.5" y1="2" x2="7.5" y2="20"/>
     </svg>`,
     urls: {
-      public: 'https://linda9617.github.io/data-easy-to-prism/',
-      local:  'https://raw.githubusercontent.com/linda9617/data-easy-to-prism/main/index.html'
+      public: 'https://linda9617.github.io/easy-data-to-prism/',
+      local:  'https://raw.githubusercontent.com/linda9617/easy-data-to-prism/main/index.html'
     }
   },
   {
     id: 'plate',
     name: 'Plate Map ↔ List Converter',
-    cat: 'plate',
-    catLabel: 'Plate Tools',
+    cat: 'data',
+    catLabel: 'Data Conversion',
     desc: 'Bidirectional conversion between well-plate map format and assay list format. Supports 96 / 384-well plates and custom template mapping.',
     tags: ['Plate Map', 'Well List', '96-well', '384-well'],
     filename: 'Plate Map List Converter.html',
@@ -203,6 +203,25 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/tecan-fca-worklist-generator/',
       local:  'https://raw.githubusercontent.com/linda9617/tecan-fca-worklist-generator/main/index.html'
+    }
+  },
+  {
+    id: 'tdimp-validator',
+    name: 'Exp-Design Package Validator',
+    cat: 'debug',
+    catLabel: 'Debug',
+    desc: 'Upload a zip package and generate a validation report for file integrity and experiment design consistency.',
+    tags: ['TDIMP', 'Validation', 'Experiment Design', 'Report', 'ZIP'],
+    filename: 'Exp-Design Package Validator.html',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="3" width="12" height="16" rx="1.5"/>
+      <path d="M8 3a2.5 2.5 0 0 1 5 0"/>
+      <polyline points="8,12 10.5,14.5 15,10"/>
+      <line x1="8" y1="8" x2="14" y2="8"/>
+    </svg>`,
+    urls: {
+      public: 'https://linda9617.github.io/exp-design-package-validator/',
+      local:  'https://linda9617.github.io/exp-design-package-validator/'
     }
   }
 ];
