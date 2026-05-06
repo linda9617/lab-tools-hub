@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ILYH's Lab Magic Hub</title>
 <style>
-:root{--bg:#f0f4f8;--surface:#fff;--border:#d0d7e3;--primary:#1e4d8c;--primary-lt:#e8eef7;--primary-dk:#163a6b;--text:#1a2b3c;--muted:#6b7a8d;--green:#1a7a6e;--green-lt:#e2f5f3}
+:root{--bg:#f0f4f8;--surface:#fff;--border:#d0d7e3;--primary:#1e4d8c;--primary-lt:#e8eef7;--primary-dk:#163a6b;--text:#1a2b3c;--muted:#6b7a8d;--green:#1a7a6e}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:15px}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
@@ -14,16 +14,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 header{background:var(--primary);color:#fff;padding:16px 28px 13px;box-shadow:0 2px 12px rgba(0,0,0,.24)}
 .hdr-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px}
 .hdr-title{display:flex;align-items:center;gap:12px}
-.hdr-logo{width:36px;height:36px;background:rgba(255,255,255,.18);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 header h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em}
 header .sub{font-size:.8rem;opacity:.68;margin-top:3px}
 header .author{font-size:.78rem;opacity:.56;align-self:flex-end}
 
 /* ── Main ── */
 main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-direction:column;gap:18px}
-
-/* ── Card shell ── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:20px 24px}
 
 /* ── Per-card action buttons ── */
 .card-actions{margin-top:4px;display:flex;gap:7px;flex-wrap:wrap}
@@ -52,11 +48,11 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 .tool-desc{font-size:.83rem;color:var(--muted);line-height:1.58}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap}
 .tag{font-size:.72rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--muted)}
-.btn-v{padding:6px 14px;border:none;border-radius:7px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .14s,box-shadow .14s,translate .1s}
+.btn-v{padding:6px 14px;border:none;border-radius:7px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .14s,box-shadow .14s,translate .1s,opacity .14s}
 .btn-v:hover{translate:0 -2px}
 .btn-v:active{translate:0 1px;box-shadow:none!important}
-.btn-pub{background:var(--primary);color:#fff;box-shadow:0 2px 6px rgba(30,77,140,.26)}
-.btn-pub:hover{background:var(--primary-dk);box-shadow:0 5px 12px rgba(30,77,140,.35)}
+.btn-pub{background:transparent;color:var(--primary);border:1.5px solid var(--primary);box-shadow:none}
+.btn-pub:hover{background:var(--primary-lt)}
 .btn-local{background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(26,122,110,.22)}
 .btn-local:hover{background:#155f55;box-shadow:0 5px 12px rgba(26,122,110,.32)}
 
@@ -78,13 +74,6 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 <header>
   <div class="hdr-inner">
     <div class="hdr-title">
-      <div class="hdr-logo">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="10" cy="10" r="8"/>
-          <path d="M6 10 Q8 6 10 10 Q12 14 14 10"/>
-          <line x1="2" y1="10" x2="18" y2="10" stroke-dasharray="2 2" stroke-width="1"/>
-        </svg>
-      </div>
       <div>
         <h1>ILYH's Lab Magic Hub</h1>
         <p class="sub">Biology data processing &amp; automation tools</p>
@@ -99,13 +88,13 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
   <!-- Filter bar -->
   <div class="filter-bar">
     <div class="search-wrap">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
-      <input class="search-input" id="searchInput" type="text" placeholder="Search tools…">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input class="search-input" id="searchInput" type="search" aria-label="Search tools" placeholder="Search tools…">
     </div>
     <div class="cat-chips" id="catChips">
       <button class="chip active" data-cat="all">All</button>
-      <button class="chip" data-cat="data">Data</button>
       <button class="chip" data-cat="analysis">Analysis</button>
+      <button class="chip" data-cat="exp-design">Exp-design</button>
       <button class="chip" data-cat="automation">Automation</button>
       <button class="chip" data-cat="debug">Debug</button>
     </div>
@@ -114,7 +103,7 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
   <!-- Tool grid -->
   <div class="tool-grid" id="toolGrid"></div>
   <div class="no-results" id="noResults">
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="18" r="14"/><line x1="27" y1="27" x2="38" y2="38"/><line x1="12" y1="18" x2="24" y2="18"/></svg>
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="18" cy="18" r="14"/><line x1="27" y1="27" x2="38" y2="38"/><line x1="12" y1="18" x2="24" y2="18"/></svg>
     No tools match your search.
   </div>
 
@@ -126,31 +115,12 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 // ── Tool definitions ──────────────────────────────────────────────────────────
 const TOOLS = [
   {
-    id: 'prism',
-    name: 'Easy Data to Prism',
-    cat: 'data',
-    catLabel: 'Data Conversion',
-    desc: 'Convert tabular or matrix data (CSV / Excel) into GraphPad Prism-ready TSV format. Supports XY, Column, Grouped, and Survival table types with live chart preview.',
-    tags: ['Prism', 'CSV', 'Excel', 'TSV'],
-    filename: 'Easy Data to Prism.html',
-    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="2" width="18" height="18" rx="2.5"/>
-      <line x1="2" y1="7.5" x2="20" y2="7.5"/>
-      <line x1="2" y1="13" x2="20" y2="13"/>
-      <line x1="7.5" y1="2" x2="7.5" y2="20"/>
-    </svg>`,
-    urls: {
-      public: 'https://linda9617.github.io/easy-data-to-prism/',
-      local:  'https://raw.githubusercontent.com/linda9617/easy-data-to-prism/main/index.html'
-    }
-  },
-  {
     id: 'plate',
     name: 'Plate Map ↔ List Converter',
-    cat: 'data',
-    catLabel: 'Data Conversion',
+    cat: 'analysis',
+    catLabel: 'Analysis',
     desc: 'Bidirectional conversion between well-plate map format and assay list format. Supports 96 / 384-well plates and custom template mapping.',
-    tags: ['Plate Map', 'Well List', '96-well', '384-well'],
+    tags: ['Plate Map', 'Plate List', 'Data Matrix'],
     filename: 'Plate Map List Converter.html',
     icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
       <rect x="2" y="2" width="18" height="18" rx="3"/>
@@ -170,12 +140,58 @@ const TOOLS = [
     }
   },
   {
+    id: 'one-stop-analysis',
+    name: 'One-Stop Analysis',
+    cat: 'analysis',
+    catLabel: 'Analysis',
+    desc: 'All-in-one assay merge + analysis pipeline. Joins design and result files by well/plate, generates bar charts, statistics tables, Two-Way ANOVA with post-hoc, and Prism-ready exports.',
+    tags: ['Data Merge', 'Heat Map', 'Statistics', 'Prism'],
+    filename: 'assay-merge-tool.html',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="8" height="8" rx="1.5"/>
+      <rect x="12" y="2" width="8" height="8" rx="1.5"/>
+      <path d="M10 6 L12 6"/>
+      <rect x="6" y="13" width="10" height="7" rx="1.5"/>
+      <line x1="6" y1="6"  x2="11" y2="13"/>
+      <line x1="16" y1="6" x2="11" y2="13"/>
+    </svg>`,
+    urls: {
+      public: 'https://linda9617.github.io/one-stop-analysis/',
+      local:  'https://raw.githubusercontent.com/linda9617/one-stop-analysis/main/index.html'
+    }
+  },
+  {
+    id: 'cells-to-ct',
+    name: 'Cells-to-CT Designer',
+    cat: 'exp-design',
+    catLabel: 'Exp-design',
+    desc: 'Design end-to-end 2-step RT-qPCR experiments with the Power SYBR® Green Cells-to-Ct™ Kit. Generates cell seeding layouts, RT plate maps, and qPCR plate maps with reagent volume calculations.',
+    tags: ['qPCR', 'RT-qPCR', 'Plate Design', 'Cells-to-CT'],
+    filename: 'Cells-to-CT Designer.html',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="18" height="18" rx="3"/>
+      <circle cx="6"  cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="10" cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="14" cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="18" cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="6"  cy="10" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="10" cy="10" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="14" cy="10" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="18" cy="10" r="1.2" fill="currentColor" stroke="none"/>
+      <path d="M4 16 Q7 13 10 16 Q13 19 16 16" stroke-width="1.8"/>
+    </svg>`,
+    urls: {
+      public: 'https://linda9617.github.io/cells-to-ct-designer/',
+      local:  'https://raw.githubusercontent.com/linda9617/cells-to-ct-designer/main/index.html'
+    }
+  },
+  {
     id: 'qpcr',
     name: 'qPCR Analysis Tool',
     cat: 'analysis',
     catLabel: 'Analysis',
     desc: 'Analyse qPCR data using the ΔΔCt method with automatic reference gene normalization. Accepts Excel/CSV input and exports results with bar chart visualizations.',
-    tags: ['qPCR', 'Gene Expression', 'ΔΔCt', 'Normalization'],
+    tags: ['qPCR', 'Gene Expression', 'ΔΔCt'],
     filename: 'qPCR Analysis Tool.html',
     icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
       <line x1="2" y1="20" x2="20" y2="20"/>
@@ -185,6 +201,51 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/qpcr-analysis-tool/',
       local:  'https://raw.githubusercontent.com/linda9617/qpcr-analysis-tool/main/index.html'
+    }
+  },
+  {
+    id: 'prism',
+    name: 'Easy Data to Prism',
+    cat: 'analysis',
+    catLabel: 'Analysis',
+    desc: 'Convert tabular or matrix data (CSV / Excel) into GraphPad Prism-ready TSV format. Supports XY, Column, Grouped, and Survival table types with live chart preview.',
+    tags: ['Data Merge', 'Prism'],
+    filename: 'Easy Data to Prism.html',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="18" height="18" rx="2.5"/>
+      <line x1="2" y1="7.5" x2="20" y2="7.5"/>
+      <line x1="2" y1="13" x2="20" y2="13"/>
+      <line x1="7.5" y1="2" x2="7.5" y2="20"/>
+    </svg>`,
+    urls: {
+      public: 'https://linda9617.github.io/easy-data-to-prism/',
+      local:  'https://raw.githubusercontent.com/linda9617/easy-data-to-prism/main/index.html'
+    }
+  },
+  {
+    id: 'easy-lab-calculator',
+    name: 'Easy Lab Calculator',
+    cat: 'analysis',
+    catLabel: 'Analysis',
+    desc: 'Common bench calculations in one place: molar / mass / volume conversions, dilution series, buffer recipes, and stock-to-working concentration calculators.',
+    tags: ['Dilution', 'Molarity', 'Buffer', 'Stock'],
+    filename: 'Easy Lab Calculator.html',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="2" width="14" height="18" rx="2"/>
+      <rect x="6.5" y="4.5" width="9" height="3.5" rx="0.6"/>
+      <circle cx="8"  cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="11" cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="14" cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="8"  cy="15"   r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="11" cy="15"   r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="14" cy="15"   r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="8"  cy="18"   r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="11" cy="18"   r="0.9" fill="currentColor" stroke="none"/>
+      <circle cx="14" cy="18"   r="0.9" fill="currentColor" stroke="none"/>
+    </svg>`,
+    urls: {
+      public: 'https://linda9617.github.io/easy-lab-calculator/',
+      local:  'https://raw.githubusercontent.com/linda9617/easy-lab-calculator/main/index.html'
     }
   },
   {
@@ -211,7 +272,7 @@ const TOOLS = [
     cat: 'debug',
     catLabel: 'Debug',
     desc: 'Upload a zip package and generate a validation report for file integrity and experiment design consistency.',
-    tags: ['TDIMP', 'Validation', 'Experiment Design', 'Report', 'ZIP'],
+    tags: ['Validation', 'Experiment Design', 'Debug'],
     filename: 'Exp-Design Package Validator.html',
     icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
       <rect x="5" y="3" width="12" height="16" rx="1.5"/>
@@ -221,7 +282,7 @@ const TOOLS = [
     </svg>`,
     urls: {
       public: 'https://linda9617.github.io/exp-design-package-validator/',
-      local:  'https://linda9617.github.io/exp-design-package-validator/'
+      local:  'https://raw.githubusercontent.com/linda9617/exp-design-package-validator/main/index.html'
     }
   }
 ];
@@ -237,10 +298,10 @@ function buildCards() {
     const card = document.createElement('div');
     card.className = 'tool-card';
     card.dataset.cat  = tool.cat;
-    card.dataset.name = (tool.name + ' ' + tool.tags.join(' ') + ' ' + tool.desc).toLowerCase();
+    card.dataset.name = (tool.name + ' ' + tool.catLabel + ' ' + tool.tags.join(' ') + ' ' + tool.desc).toLowerCase();
     card.innerHTML = `
       <div class="card-top">
-        <div class="tool-icon">${tool.icon}</div>
+        <div class="tool-icon" aria-hidden="true">${tool.icon}</div>
         <div>
           <div class="tool-name">${tool.name}</div>
           <span class="tool-cat">${tool.catLabel}</span>
@@ -249,8 +310,8 @@ function buildCards() {
       <div class="tool-desc">${tool.desc}</div>
       <div class="card-tags">${tool.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       <div class="card-actions">
-        <button class="btn-v btn-pub"   data-id="${tool.id}" data-ver="public">Github</button>
-        <button class="btn-v btn-local" data-id="${tool.id}" data-ver="local">Download</button>
+        <button type="button" class="btn-v btn-pub" data-id="${tool.id}" data-ver="public">Github</button>
+        <button type="button" class="btn-v btn-local" data-id="${tool.id}" data-ver="local">Download</button>
       </div>`;
     grid.appendChild(card);
   });
