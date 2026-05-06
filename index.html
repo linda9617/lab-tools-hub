@@ -44,6 +44,8 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 .card-top{display:flex;gap:13px;align-items:flex-start}
 .tool-icon{width:44px;height:44px;border-radius:10px;background:var(--primary-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary)}
 .tool-name{font-size:.97rem;font-weight:700;line-height:1.2;margin-bottom:4px}
+.tool-name a{color:inherit;text-decoration:none}
+.tool-name a:hover{color:var(--primary);text-decoration:underline}
 .tool-cat{display:inline-block;font-size:.71rem;font-weight:600;color:var(--primary);background:var(--primary-lt);border-radius:4px;padding:2px 7px;letter-spacing:.01em}
 .tool-desc{font-size:.83rem;color:var(--muted);line-height:1.58}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap}
@@ -303,7 +305,7 @@ function buildCards() {
       <div class="card-top">
         <div class="tool-icon" aria-hidden="true">${tool.icon}</div>
         <div>
-          <div class="tool-name">${tool.name}</div>
+          <div class="tool-name"><a href="${tool.urls.public}" target="_blank" rel="noopener noreferrer">${tool.name}</a></div>
           <span class="tool-cat">${tool.catLabel}</span>
         </div>
       </div>
