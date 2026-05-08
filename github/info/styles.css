@@ -51,12 +51,16 @@ header{background:var(--primary);color:#fff;padding:14px 28px 12px;box-shadow:0 
 /* Buttons */
 .btn{padding:13px 22px;border:1.5px solid transparent;border-radius:8px;font-size:.86rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:140px;line-height:1.2;transition:translate .12s,box-shadow .15s,background .15s}
 .btn:hover{translate:0 -1px}
+.btn:active{translate:0 0;transition:none}
 .btn-primary{background:var(--primary);color:#fff;box-shadow:0 2px 6px rgba(30,77,140,.26)}
 .btn-primary:hover{background:var(--primary-dk);box-shadow:0 5px 12px rgba(30,77,140,.32)}
+.btn-primary:active{background:#11305a;box-shadow:0 1px 3px rgba(30,77,140,.3) inset}
 .btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
 .btn-ghost:hover{background:var(--primary-lt)}
+.btn-ghost:active{background:#d3e0f0}
 .btn-local{background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(26,122,110,.22)}
 .btn-local:hover{background:#155f56;box-shadow:0 5px 12px rgba(26,122,110,.32)}
+.btn-local:active{background:#104a44;box-shadow:0 1px 3px rgba(26,122,110,.3) inset}
 .btn:disabled{opacity:.6;cursor:wait;translate:0 0!important}
 
 /* Main */
