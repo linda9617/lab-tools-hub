@@ -37,9 +37,9 @@ header{background:var(--primary);color:#fff;padding:14px 28px 12px;box-shadow:0 
 .hero.condensed .hero-actions{margin-top:0;gap:8px;flex-wrap:nowrap;flex-shrink:0}
 .hero.condensed .btn{padding:8px 14px;font-size:.78rem;min-width:0}
 
-/* Compact back button shown only in condensed hero — Demo B style */
-.hero-back{display:none;flex-shrink:0;align-items:center;gap:7px;padding:6px 11px 6px 9px;border-radius:7px;background:transparent;color:var(--primary);text-decoration:none;font-size:.78rem;font-weight:600;line-height:1;transition:background .15s}
-.hero-back svg{flex-shrink:0;transition:translate .18s}
+/* Compact back button shown only in condensed hero — chevron-only */
+.hero-back{display:none;flex-shrink:0;align-items:center;justify-content:center;padding:6px 9px;border-radius:7px;background:transparent;color:var(--primary);text-decoration:none;line-height:1;transition:background .15s}
+.hero-back svg{display:block;flex-shrink:0;transition:translate .18s}
 .hero-back:hover{background:var(--primary-lt)}
 .hero-back:hover svg{translate:-2px 0}
 .hero.condensed .hero-back{display:inline-flex}
