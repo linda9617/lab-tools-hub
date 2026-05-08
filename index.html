@@ -11,12 +11,18 @@ html{font-size:15px}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
 /* ── Header ── */
-header{background:var(--primary);color:#fff;padding:16px 28px 13px;box-shadow:0 2px 12px rgba(0,0,0,.24)}
-.hdr-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px}
+header{background:var(--primary);color:#fff;padding:16px 28px 13px;box-shadow:0 2px 12px rgba(0,0,0,.24);position:sticky;top:0;z-index:50;transition:padding .22s ease,box-shadow .22s ease}
+.hdr-inner{max-width:900px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;transition:align-items .22s ease}
 .hdr-title{display:flex;align-items:center;gap:12px}
-header h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em}
-header .sub{font-size:.8rem;opacity:.68;margin-top:3px}
+header h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;transition:font-size .22s ease}
+header .sub{font-size:.8rem;opacity:.68;margin-top:3px;transition:opacity .18s ease,max-height .22s ease,margin-top .22s ease;overflow:hidden}
 header .author{font-size:.78rem;opacity:.56;align-self:flex-end}
+
+/* Header — condensed (after scrolling) */
+header.condensed{padding:8px 28px;box-shadow:0 3px 14px rgba(0,0,0,.32)}
+header.condensed .hdr-inner{align-items:center}
+header.condensed h1{font-size:1.05rem}
+header.condensed .sub{opacity:0;max-height:0;margin-top:0;pointer-events:none}
 
 /* ── Main ── */
 main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-direction:column;gap:18px}
@@ -40,6 +46,9 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
 .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px 17px;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:11px;transition:box-shadow .2s,translate .15s}
 .tool-card:hover{box-shadow:0 7px 24px rgba(30,77,140,.14);translate:0 -2px}
+.tool-card.clickable{cursor:pointer}
+.tool-card.clickable:hover{border-color:var(--primary);box-shadow:0 9px 26px rgba(30,77,140,.18)}
+.tool-card.clickable:active{translate:0 0;background:var(--primary-lt);transition:none}
 .tool-card.hidden{display:none}
 .card-top{display:flex;gap:13px;align-items:flex-start}
 .tool-icon{width:44px;height:44px;border-radius:10px;background:var(--primary-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary)}
@@ -139,7 +148,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/plate-map-list-converter/',
       local:  'https://raw.githubusercontent.com/linda9617/plate-map-list-converter/main/index.html'
-    }
+    },
+    info: './github/info/plate-info.html'
   },
   {
     id: 'one-stop-analysis',
@@ -160,7 +170,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/one-stop-analysis/',
       local:  'https://raw.githubusercontent.com/linda9617/one-stop-analysis/main/index.html'
-    }
+    },
+    info: './github/info/one-stop-analysis-info.html'
   },
   {
     id: 'cells-to-ct',
@@ -185,7 +196,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/cells-to-ct-designer/',
       local:  'https://raw.githubusercontent.com/linda9617/cells-to-ct-designer/main/index.html'
-    }
+    },
+    info: './github/info/cells-to-ct-info.html'
   },
   {
     id: 'qpcr',
@@ -203,7 +215,32 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/qpcr-analysis-tool/',
       local:  'https://raw.githubusercontent.com/linda9617/qpcr-analysis-tool/main/index.html'
-    }
+    },
+    info: './github/info/qpcr-info.html'
+  },
+  {
+    id: 'proteomics-to-neo',
+    name: 'Proteomics-to-Neo',
+    cat: 'analysis',
+    catLabel: 'Analysis',
+    desc: 'Multi-omics analyzer for proteomics and phospho-proteomics. Performs QC, differential expression, GSEA (MSigDB), heatmaps, cross-omics integration, and phospho-regulation analysis with interactive volcano / bubble / NES visualizations.',
+    tags: ['Proteomics', 'Phospho', 'GSEA', 'Differential', 'Multi-omics'],
+    filename: 'proteomics-to-neo.html',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="7" r="2"/>
+      <circle cx="16" cy="6" r="1.6"/>
+      <circle cx="15" cy="15" r="2.2"/>
+      <circle cx="6" cy="16" r="1.4"/>
+      <line x1="6" y1="7" x2="16" y2="6"/>
+      <line x1="6" y1="7" x2="15" y2="15"/>
+      <line x1="16" y1="6" x2="15" y2="15"/>
+      <line x1="6" y1="16" x2="15" y2="15"/>
+    </svg>`,
+    urls: {
+      public: 'https://linda9617.github.io/proteomics-to-neo/',
+      local:  'https://raw.githubusercontent.com/linda9617/proteomics-to-neo/main/index.html'
+    },
+    info: './github/info/proteomics-to-neo-info.html'
   },
   {
     id: 'prism',
@@ -222,7 +259,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/easy-data-to-prism/',
       local:  'https://raw.githubusercontent.com/linda9617/easy-data-to-prism/main/index.html'
-    }
+    },
+    info: './github/info/prism-info.html'
   },
   {
     id: 'easy-lab-calculator',
@@ -248,7 +286,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/easy-lab-calculator/',
       local:  'https://raw.githubusercontent.com/linda9617/easy-lab-calculator/main/index.html'
-    }
+    },
+    info: './github/info/easy-lab-calculator-info.html'
   },
   {
     id: 'tecan',
@@ -266,7 +305,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/tecan-fca-worklist-generator/',
       local:  'https://raw.githubusercontent.com/linda9617/tecan-fca-worklist-generator/main/index.html'
-    }
+    },
+    info: './github/info/tecan-info.html'
   },
   {
     id: 'tdimp-validator',
@@ -285,7 +325,8 @@ const TOOLS = [
     urls: {
       public: 'https://linda9617.github.io/exp-design-package-validator/',
       local:  'https://raw.githubusercontent.com/linda9617/exp-design-package-validator/main/index.html'
-    }
+    },
+    info: './github/info/tdimp-validator-info.html'
   }
 ];
 
@@ -301,11 +342,12 @@ function buildCards() {
     card.className = 'tool-card';
     card.dataset.cat  = tool.cat;
     card.dataset.name = (tool.name + ' ' + tool.catLabel + ' ' + tool.tags.join(' ') + ' ' + tool.desc).toLowerCase();
+    if (tool.info) { card.dataset.info = tool.info; card.classList.add('clickable'); }
     card.innerHTML = `
       <div class="card-top">
         <div class="tool-icon" aria-hidden="true">${tool.icon}</div>
         <div>
-          <div class="tool-name"><a href="${tool.urls.public}" target="_blank" rel="noopener noreferrer">${tool.name}</a></div>
+          <div class="tool-name">${tool.name}</div>
           <span class="tool-cat">${tool.catLabel}</span>
         </div>
       </div>
@@ -319,6 +361,12 @@ function buildCards() {
   });
   grid.querySelectorAll('.btn-v').forEach(btn => {
     btn.addEventListener('click', () => launch(btn.dataset.id, btn.dataset.ver));
+  });
+  grid.querySelectorAll('.tool-card.clickable').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('.card-actions') || e.target.closest('a')) return;
+      window.location.href = card.dataset.info;
+    });
   });
   applyFilter();
 }
@@ -379,6 +427,20 @@ document.getElementById('searchInput').addEventListener('input', e => {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 buildCards();
-</script>
+// ── Condensed sticky header on scroll ────────────────────────────────
+(function(){
+  var hdr = document.querySelector('header');
+  if (!hdr) return;
+  var threshold = 60, ticking = false;
+  function update(){
+    var y = window.scrollY || window.pageYOffset || 0;
+    hdr.classList.toggle('condensed', y > threshold);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ window.requestAnimationFrame(update); ticking = true; }
+  }, { passive:true });
+  update();
+})();</script>
 </body>
 </html>

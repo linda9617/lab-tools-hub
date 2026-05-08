@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteomics-to-Neo · Lab Magic Hub</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="hero-shrink.js"></script>
+</head>
+<body>
+<header>
+  <div class="hdr-inner">
+    <a class="back-link" href="../../index.html">← Back to Lab Magic Hub</a>
+    <span class="hdr-author">By ILYH</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">
+      <svg width="36" height="36" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="7" r="2"/>
+        <circle cx="16" cy="6" r="1.6"/>
+        <circle cx="15" cy="15" r="2.2"/>
+        <circle cx="6" cy="16" r="1.4"/>
+        <line x1="6" y1="7" x2="16" y2="6"/>
+        <line x1="6" y1="7" x2="15" y2="15"/>
+        <line x1="16" y1="6" x2="15" y2="15"/>
+        <line x1="6" y1="16" x2="15" y2="15"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <span class="hero-cat">Analysis</span>
+      <h1>Proteomics-to-Neo</h1>
+      <p class="lede">Multi-omics analyzer for proteomics and phospho-proteomics. Performs QC, differential expression, GSEA (MSigDB), heatmaps, cross-omics integration, and phospho-regulation analysis with interactive volcano / bubble / NES visualizations.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://linda9617.github.io/proteomics-to-neo/" target="_blank" rel="noopener">Run on GitHub</a>
+        <button type="button" class="btn btn-local" id="btnDownload"
+                data-url="https://raw.githubusercontent.com/linda9617/proteomics-to-neo/main/index.html"
+                data-filename="proteomics-to-neo.html">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2><span class="num">1</span>How it works</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <span class="step-no">Step 1</span>
+      <h3>Upload proteomics &amp; phospho files</h3>
+      <p>Drop one or more datasets (proteomics, phospho or both). Sample annotation is parsed and assigned to groups.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 2</span>
+      <h3>QC &amp; differential expression</h3>
+      <p>PCA, sample CV, missing-value summary; DEP detection per comparison with volcano / heatmap views.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 3</span>
+      <h3>GSEA &amp; bubble plots</h3>
+      <p>MSigDB-backed pre-ranked GSEA; results explored as NES bar charts, heatmaps and gene-overlap bubble plots.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 4</span>
+      <h3>Cross-omics &amp; phospho regulation</h3>
+      <p>Integrate proteomics + phospho per gene, classify regulation (paired/unpaired) and export tables &amp; charts.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Preview</h2>
+
+  <div class="screenshot" data-num="01">
+    <div class="screenshot-cap"><h3>One drop, every analysis unlocked</h3></div>
+    <div class="screenshot-desc">Drop proteomics and phospho CSV / ZIP files into the matching side — matrix, DEP and GSEA outputs are auto-classified by column headers. A live readiness table shows which downstream features (QC, DEP, heatmap, GSEA, cross-omics, phospho-regulation) are ready, file by file.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/proteomics-to-neo-1.png" alt="Upload &amp; readiness table"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="02">
+    <div class="screenshot-cap"><h3>Quality control at a glance</h3></div>
+    <div class="screenshot-desc">Sample-level Log2 distribution, CV histogram with adjustable cutoff, pairwise Pearson correlation matrix and a top-2 PCA — all rendered side by side from the same matrix. Z-score scaling and PC flipping toggles let you reorient PCA without leaving the page.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/proteomics-to-neo-2.png" alt="Quality control panel"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="03">
+    <div class="screenshot-cap"><h3>Differential expression, fully interactive</h3></div>
+    <div class="screenshot-desc">Per-comparison volcano plot with up/down counts and a sortable, searchable DEP table. Adjust |Log2FC| and adjusted-p thresholds and the volcano, count bars and table re-tally instantly; export the filtered DEP table as CSV.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/proteomics-to-neo-3.png" alt="Differential expression"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="04">
+    <div class="screenshot-cap"><h3>Expression heatmap on demand</h3></div>
+    <div class="screenshot-desc">Z-scored row heatmap of the top features by |Log2FC| in the chosen comparison, or a custom gene list. Mode, top-N and comparison selectors regenerate the heatmap in place — no manual reshaping or external scripts.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/proteomics-to-neo-4.png" alt="Expression heatmap"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="05">
+    <div class="screenshot-cap"><h3>GSEA across pathways &amp; comparisons</h3></div>
+    <div class="screenshot-desc">Pre-ranked GSEA from uploaded CSVs (or run live from DEP + GMT). Explore as NES bar chart, NES heatmap, bubble plot or pathway list across multiple comparisons; collection, p.adj and Top-N filters update every view together. Leading-edge gene collapse is annotated as <code>GENE(×N)</code>.</div>
+    <div class="screenshot-frame"><div class="screenshot-img dual"><img src="img/proteomics-to-neo-5.1.png" alt="GSEA NES bar chart"><img src="img/proteomics-to-neo-5.2.png" alt="GSEA NES heatmap"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="06">
+    <div class="screenshot-cap"><h3>Cross-omics scatter</h3></div>
+    <div class="screenshot-desc">Each phosphosite is plotted against its parent protein (X = protein Log2FC, Y = phospho Log2FC). Concordant / discordant counts, Pearson r and unpaired-site dropouts are summarized alongside the plot, so cross-layer trends emerge in one click.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/proteomics-to-neo-6.png" alt="Cross-omics scatter"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="07">
+    <div class="screenshot-cap"><h3>Phospho regulation volcano</h3></div>
+    <div class="screenshot-desc">Two modes: compute correction (regulation = phospho.Log2FC − protein.Log2FC) or treat phospho.Log2FC as already-corrected regulation. Up- / down-regulated counts, paired-vs-unpaired markers and adjustable |reg| cutoff make protein-corrected phospho changes obvious without R or scripts.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/proteomics-to-neo-7.png" alt="Phospho regulation volcano"></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('btnDownload');if(!btn)return;
+  btn.addEventListener('click',function(){
+    var url=btn.dataset.url,filename=btn.dataset.filename,orig=btn.textContent;
+    btn.textContent='Downloading…';btn.disabled=true;
+    fetch(url).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob();})
+      .then(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},10000);})
+      .catch(function(){alert('Download failed. Please try the GitHub link instead.');})
+      .finally(function(){btn.textContent=orig;btn.disabled=false;});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>qPCR Analysis Tool · Lab Magic Hub</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="hero-shrink.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="hdr-inner">
+    <a class="back-link" href="../../index.html">← Back to Lab Magic Hub</a>
+    <span class="hdr-author">By ILYH</span>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">
+      <svg width="36" height="36" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 18 L3 11 Q11 6 19 11 L19 18"/>
+        <line x1="3" y1="14" x2="19" y2="14"/>
+        <circle cx="6" cy="9" r="1.2"/>
+        <circle cx="11" cy="6.4" r="1.2"/>
+        <circle cx="16" cy="9" r="1.2"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <span class="hero-cat">Analysis</span>
+      <h1>qPCR Analysis Tool</h1>
+      <p class="lede">Analyse qPCR data using the ΔΔCt method with automatic reference gene normalization. Accepts Excel/CSV input and exports results with bar chart visualizations.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://linda9617.github.io/qpcr-analysis-tool/" target="_blank" rel="noopener">Run on GitHub</a>
+        <button type="button" class="btn btn-local" id="btnDownload"
+                data-url="https://raw.githubusercontent.com/linda9617/qpcr-analysis-tool/main/index.html"
+                data-filename="qPCR Analysis Tool.html">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ── How it works ── -->
+<section>
+  <h2><span class="num">1</span>How it works</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <span class="step-no">Step 1</span>
+      <h3>Upload qPCR result file</h3>
+      <p>Drag an Excel/CSV export from your instrument. The tool auto-detects column headers (<code>Sample</code>, <code>Target</code>, <code>Cт</code>, <code>Cq</code>).</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 2</span>
+      <h3>Confirm reference gene &amp; control group</h3>
+      <p>Pick one or more housekeeping genes (e.g. <code>GAPDH</code>, <code>ACTB</code>) and the control group used as denominator for ΔΔCt.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 3</span>
+      <h3>Review normalized values</h3>
+      <p>Inspect ΔCt, ΔΔCt, and fold-change tables side by side; outliers are flagged automatically.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 4</span>
+      <h3>Plot &amp; export</h3>
+      <p>Customize bar plot, then export TSV / PNG / chart-ready Prism block for GraphPad Prism XY or Grouped tables.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Preview ── -->
+<section>
+  <h2><span class="num">2</span>Preview</h2>
+
+  <div class="screenshot" data-num="01">
+    <div class="screenshot-cap"><h3>Drag-and-drop input</h3></div>
+    <div class="screenshot-desc">Accepts native Excel exports from QuantStudio Design &amp; Analysis software, Bio-Rad CFX Maestro, and generic CSV. Multiple files merge automatically.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/qpcr-img-1.png" alt="qPCR Analysis Tool — Step 1: drag-and-drop input"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="02">
+    <div class="screenshot-cap"><h3>Reference gene &amp; group setup</h3></div>
+    <div class="screenshot-desc">Select housekeeping gene(s), assign control group, mark technical replicates. The interface previews the parsed plate map alongside the configuration panel.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/qpcr-img-2.png" alt="qPCR Analysis Tool — Step 2: reference gene &amp; group setup"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="03">
+    <div class="screenshot-cap"><h3>Results, plotting &amp; export</h3></div>
+    <div class="screenshot-desc">Per-target bar charts with replicate dots and error bars; Y-axis scale and color theme are configurable inline. One-click export to Prism Grouped table layout, TSV and PNG — replicate structure is preserved so error bars regenerate correctly inside Prism.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/qpcr-img-3.png" alt="qPCR Analysis Tool — Step 3: results, plotting &amp; Prism export"></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('btnDownload');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    var url = btn.dataset.url, filename = btn.dataset.filename;
+    var orig = btn.textContent;
+    btn.textContent = 'Downloading…'; btn.disabled = true;
+    fetch(url)
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.blob(); })
+      .then(function(blob){
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function(){ URL.revokeObjectURL(a.href); }, 10000);
+      })
+      .catch(function(){ alert('Download failed. Please try the GitHub link instead.'); })
+      .finally(function(){ btn.textContent = orig; btn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>

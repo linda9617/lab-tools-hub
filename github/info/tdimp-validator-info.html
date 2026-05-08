@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exp-Design Package Validator · Lab Magic Hub</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="hero-shrink.js"></script>
+</head>
+<body>
+<header>
+  <div class="hdr-inner">
+    <a class="back-link" href="../../index.html">← Back to Lab Magic Hub</a>
+    <span class="hdr-author">By ILYH</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">
+      <svg width="36" height="36" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="3" width="12" height="16" rx="1.5"/>
+        <path d="M8 3a2.5 2.5 0 0 1 5 0"/>
+        <polyline points="8,12 10.5,14.5 15,10"/>
+        <line x1="8" y1="8" x2="14" y2="8"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <span class="hero-cat">Debug</span>
+      <h1>Exp-Design Package Validator</h1>
+      <p class="lede">Drop an exp-design ZIP package and get a single-page validation report: file inventory, metadata QC, <code>config.json</code> vs metadata cross-check, and metadata vs Echo picklist cross-check — every parameter scored PASS / WARN / ERROR before the experiment goes to the bench.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://linda9617.github.io/exp-design-package-validator/" target="_blank" rel="noopener">Run on GitHub</a>
+        <button type="button" class="btn btn-local" id="btnDownload"
+                data-url="https://raw.githubusercontent.com/linda9617/exp-design-package-validator/main/index.html"
+                data-filename="Exp-Design Package Validator.html">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2><span class="num">1</span>How it works</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <span class="step-no">Step 1</span>
+      <h3>Drop ZIP &amp; run validation</h3>
+      <p>Drag in the exp-design ZIP package, click <strong>Run validation</strong>; every contained file is listed and parsed in one pass.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 2</span>
+      <h3>Metadata QC</h3>
+      <p>Plate names, regional conditions, sample types, condition columns and per-group replicate counts are summarized; structural checks (duplicate plate+well, bad well format, out-of-range wells, row/col mismatch) flagged as MATCH or FAIL.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 3</span>
+      <h3>Config vs Metadata cross-check</h3>
+      <p>Parameters from <code>config.json</code> (perturbagen list, regional conditions, concentrations, replicate count, plate count) are matched row-by-row against the metadata, with status flags per field.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 4</span>
+      <h3>Metadata vs Echo picklist cross-check</h3>
+      <p>Each picklist (perturbagen / treatment) is verified against active metadata rows: ID coverage, destination-well match, concentration / value match, transfer volume, source plate availability and dead-volume sufficiency. PDF report exports in one click.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Preview</h2>
+
+  <div class="screenshot" data-num="01">
+    <div class="screenshot-cap"><h3>One drop, one verdict</h3></div>
+    <div class="screenshot-desc">Drop the exp-design ZIP and click <strong>Run validation</strong>: a top-level PASS / WARN / ERROR banner with totals (62 PASS, 0 WARN, 0 ERROR), config and design-summary parse status, run timestamps and the full file inventory of the package — all on a single screen, with a one-click <strong>Download report PDF</strong>.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/validator-1.png" alt="Run validation &amp; summary"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="02">
+    <div class="screenshot-cap"><h3>Metadata at a glance</h3></div>
+    <div class="screenshot-desc">Active vs masked vs blank rows, plate names, regional conditions, sample types, condition columns and per-group replicate counts — all summarized from the metadata CSV. Structural checks (duplicate plate+well, bad well format, out-of-range wells, row/col mismatch) are scored MATCH / FAIL in the same panel.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/validator-2.png" alt="Metadata Summary"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="03">
+    <div class="screenshot-cap"><h3>Config vs metadata cross-check</h3></div>
+    <div class="screenshot-desc">Setup, perturbagen, randomization and condition regions parsed from <code>config.json</code> are laid out next to the active metadata, and a Cross-Check table flags every parameter (plate count, perturbagen list, regional conditions, concentrations, replicate count) as MATCH or mismatch — catching the silent design drift before instrument time.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/validator-3.png" alt="Exp-Design from config.json &amp; cross-check"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="04">
+    <div class="screenshot-cap"><h3>Picklist cross-check, picklist by picklist</h3></div>
+    <div class="screenshot-desc">Every Echo picklist is verified twice: against active metadata rows (ID found, destination-well match, concentration / value match, transfer volume) and against source-plate availability (in source, source plate &amp; well, sum transfer vs declared and usable volume after dead volume). Volume sufficiency is flagged per perturbagen, so dead-volume surprises don’t happen on the deck.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="img/validator-4.png" alt="Metadata &amp; Source vs Picklist Cross-Check"></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('btnDownload');if(!btn)return;
+  btn.addEventListener('click',function(){
+    var url=btn.dataset.url,filename=btn.dataset.filename,orig=btn.textContent;
+    btn.textContent='Downloading…';btn.disabled=true;
+    fetch(url).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob();})
+      .then(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},10000);})
+      .catch(function(){alert('Download failed. Please try the GitHub link instead.');})
+      .finally(function(){btn.textContent=orig;btn.disabled=false;});
+  });
+})();
+</script>
+</body>
+</html>
