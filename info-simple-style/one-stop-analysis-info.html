@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>One-Stop Analysis · Lab Magic Hub</title>
+<style>
+:root{
+  --bg:#f7f8fa;
+  --surface:#fff;
+  --line:#e6e9ee;
+  --line-soft:#f0f2f5;
+  --text:#1a2332;
+  --muted:#6b7280;
+  --primary:#1e4d8c;
+  --primary-soft:#eef3fa;
+  --accent:#0f9b8e;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.top{background:var(--primary);color:#e6eef9;border-bottom:1px solid #163a6b;position:sticky;top:0;z-index:50}
+.top-inner{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:16px;min-height:52px;position:relative}
+.top a.back{color:#cfd6df;text-decoration:none;font-size:.84rem;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border-radius:7px;flex-shrink:0;transition:background .15s,color .15s}
+.top a.back:hover{background:rgba(255,255,255,.08);color:#fff}
+.top a.back svg{transition:translate .18s}
+.top a.back:hover svg{translate:-2px 0}
+.top .author{color:#cfd9e8;font-size:.76rem;letter-spacing:.04em;position:absolute;right:28px;top:50%;transform:translateY(-50%);pointer-events:none}
+
+.top-title{position:absolute;left:120px;right:430px;top:0;height:52px;line-height:52px;font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.2rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em;opacity:0;margin:0;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;pointer-events:none;transition:opacity .2s ease}
+.top-actions{display:flex;gap:8px;flex-shrink:0;opacity:0;width:0;overflow:hidden;margin-left:auto;margin-right:90px;transition:opacity .2s ease}
+.top-actions .btn{padding:7px 13px;font-size:.78rem;min-width:0;border-radius:7px;line-height:1}
+.top-actions .btn-primary{background:var(--primary);color:#fff;border-color:transparent;box-shadow:none}
+.top-actions .btn-primary:hover{background:#2a63aa}
+.top-actions .btn-ghost{background:transparent;color:#e6e9ee;border-color:rgba(255,255,255,.22)}
+.top-actions .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
+.top-actions .btn-text{background:transparent;color:#cfd6df;border-color:transparent}
+.top-actions .btn-text:hover{color:#fff;background:rgba(255,255,255,.06)}
+.top.condensed .top-title{opacity:1}
+.top.condensed .top-actions{opacity:1;width:auto}
+@media (max-width:760px){
+  .top.condensed .top-title{display:none}
+}
+
+.hero{background:#fff;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:1100px;margin:0 auto;padding:64px 32px 56px;display:flex;gap:36px;align-items:flex-start}
+.hero-icon{flex-shrink:0;width:80px;height:80px;border-radius:18px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;border:1px solid #dde7f4}
+.hero-icon svg{width:40px;height:40px}
+.hero-text{flex:1;min-width:0}
+.hero-cat{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;color:var(--primary);letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.hero-cat::before{content:"";width:18px;height:1px;background:var(--primary);display:inline-block}
+.hero h1{font-family:"Source Serif Pro","Charter","Iowan Old Style",Georgia,serif;font-size:2.45rem;font-weight:600;letter-spacing:-.014em;line-height:1.16;margin-bottom:14px;color:var(--text);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.hero .lede{font-size:1rem;color:var(--muted);max-width:680px;line-height:1.65}
+.hero-actions{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+
+.btn{font-family:inherit;font-size:.85rem;font-weight:600;text-decoration:none;line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;border:1px solid transparent;padding:11px 16px;border-radius:8px;min-width:108px;transition:all .15s}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 1px 2px rgba(30,77,140,.18)}
+.btn-primary:hover{background:#163a6b;box-shadow:0 3px 8px rgba(30,77,140,.24)}
+.btn-primary:active{translate:0 1px;box-shadow:0 1px 2px rgba(30,77,140,.18)}
+.btn-ghost{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+.btn-ghost:active{background:var(--primary-soft)}
+.btn-text{background:transparent;color:var(--muted);border-color:transparent}
+.btn-text:hover{color:var(--text)}
+.btn-text:active{color:var(--primary)}
+
+main{max-width:1100px;margin:0 auto;padding:48px 32px 80px}
+section{margin-bottom:64px}
+section:last-child{margin-bottom:0}
+
+.title{margin-bottom:28px}
+.title-row{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.title-num{font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.55rem;font-weight:500;color:var(--primary);opacity:.55;letter-spacing:-.005em;line-height:1}
+.title h2{font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.55rem;font-weight:600;color:var(--text);letter-spacing:-.008em;line-height:1.2}
+.title-rule{height:1px;background:linear-gradient(to right,var(--line) 0%,var(--line) 60%,transparent 100%)}
+
+.intro ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.intro li{padding-left:22px;position:relative;color:var(--text);font-size:.96rem;line-height:1.65;opacity:.88}
+.intro li::before{content:"";position:absolute;left:4px;top:.65em;width:8px;height:8px;border-radius:2px;background:var(--primary);opacity:.7;rotate:45deg}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.step{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:20px 22px;position:relative;overflow:hidden}
+.step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--primary)}
+.step .n{font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:.74rem;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px}
+.step h3{font-size:.96rem;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.005em}
+.step p{font-size:.86rem;color:var(--muted);line-height:1.6}
+
+.shot{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:26px 28px;margin-bottom:22px;position:relative;overflow:hidden}
+.shot::before{content:attr(data-num);position:absolute;top:-44px;right:14px;font-size:11rem;font-weight:900;color:var(--primary);opacity:.07;line-height:1;font-family:Georgia,"Times New Roman",serif;pointer-events:none;letter-spacing:-.05em}
+.shot:last-child{margin-bottom:0}
+.shot-cap{position:relative;z-index:1;border-bottom:1px solid var(--line-soft);padding-bottom:12px;margin-bottom:14px}
+.shot-cap h3{font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.32rem;font-weight:500;color:var(--primary);line-height:1.3;letter-spacing:-.005em}
+.shot-desc{position:relative;z-index:1;color:var(--muted);font-size:.93rem;line-height:1.65;max-width:760px;margin-bottom:18px}
+.shot-img{position:relative;z-index:1;background:var(--bg);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.shot-img img{display:block;width:100%;height:auto}
+.shot-img.dual{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
+
+footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;text-align:center}
+
+@media (max-width:680px){
+  .hero-inner{flex-direction:column;gap:18px;padding:42px 22px 36px}
+  .hero h1{font-size:1.7rem}
+  .shot{padding:20px}
+  .shot::before{font-size:7rem;top:-22px;right:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-inner">
+    <a class="back" href="../index.html">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,3 4,8 10,13"/></svg>
+      <span>Back</span>
+    </a>
+    <span class="top-title">One-Stop Analysis</span>
+    <div class="top-actions">
+      <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/one-stop-analysis/" target="_blank" rel="noopener">Datalab</a>
+      <a class="btn btn-ghost" href="https://linda9617.github.io/one-stop-analysis/" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/one-stop-analysis/main/index.html" download="assay-merge-tool.html">Download</a>
+    </div>
+    <span class="author">By ILYH</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">
+      <svg width="36" height="36" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="8" height="8" rx="1.5"/>
+        <rect x="12" y="2" width="8" height="8" rx="1.5"/>
+        <path d="M10 6 L12 6"/>
+        <rect x="6" y="13" width="10" height="7" rx="1.5"/>
+        <line x1="6" y1="6" x2="11" y2="13"/>
+        <line x1="16" y1="6" x2="11" y2="13"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <span class="hero-cat">Analysis</span>
+      <h1>One-Stop Analysis</h1>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/one-stop-analysis/" target="_blank" rel="noopener">Datalab</a>
+        <a class="btn btn-ghost" href="https://linda9617.github.io/one-stop-analysis/" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/one-stop-analysis/main/index.html" download="assay-merge-tool.html">Download</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="intro">
+  <div class="title">
+    <div class="title-row">
+      <span class="title-num">1</span>
+      <h2>What it does</h2>
+    </div>
+    <div class="title-rule"></div>
+  </div>
+  <ul>
+    <li>Merges plate-design files with assay results by well/plate ID into a single normalized table.</li>
+    <li>Performs Two-Way ANOVA with post-hoc tests, auto-flagging outliers and missing groups.</li>
+    <li>Exports Prism-formatted TSV with replicate structure intact for error-bar regeneration.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="title">
+    <div class="title-row">
+      <span class="title-num">2</span>
+      <h2>How it works</h2>
+    </div>
+    <div class="title-rule"></div>
+  </div>
+  <div class="steps">
+    <div class="step"><span class="n">Step 1</span><h3>Upload design &amp; result files</h3><p>Drag a plate-design file (well → group / treatment) together with one or more assay result files; the tool merges them by well or plate ID into a single long table.</p></div>
+    <div class="step"><span class="n">Step 2</span><h3>Configure groups &amp; comparisons</h3><p>Map columns to roles, choose normalization, define which factors and reference groups to compare — all before any stats are computed.</p></div>
+    <div class="step"><span class="n">Step 3</span><h3>Review charts &amp; statistics</h3><p>Overview chart, Two-Way ANOVA, post-hoc tests and descriptive stats; significance markers, outliers and missing groups are flagged automatically.</p></div>
+    <div class="step"><span class="n">Step 4</span><h3>Export to Prism</h3><p>Download Prism-formatted TSV blocks alongside the merged table and stats summary; replicate structure preserved.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="title">
+    <div class="title-row">
+      <span class="title-num">3</span>
+      <h2>What it looks like</h2>
+    </div>
+    <div class="title-rule"></div>
+  </div>
+
+  <div class="shot" data-num="01">
+    <div class="shot-body">
+      <div class="shot-cap"><h3>One drop, every plate joined</h3></div>
+      <p class="shot-desc">Drag a plate-design file together with raw assay results from any reader. Wells, plates and replicates are joined into a single long table — no manual VLOOKUP, no copy-paste between sheets.</p>
+      <div class="shot-img"><img src="../img/one-stop-analysis-1.png" alt="One drop, every plate joined"></div>
+    </div>
+  </div>
+
+  <div class="shot" data-num="02">
+    <div class="shot-body">
+      <div class="shot-cap"><h3>Configure groups before you run</h3></div>
+      <p class="shot-desc">Assign columns to group, replicate and response roles; choose normalization and reference levels; pick which factors to compare. Every choice is previewed live so the analysis matches the experiment, not the other way around.</p>
+      <div class="shot-img"><img src="../img/one-stop-analysis-2.png" alt="Configure groups"></div>
+    </div>
+  </div>
+
+  <div class="shot" data-num="03">
+    <div class="shot-body">
+      <div class="shot-cap"><h3>The whole experiment, one figure</h3></div>
+      <p class="shot-desc">An overview chart lays out every group side by side — replicate dots, group means and error bars — so trends, dose responses and outliers stand out at first glance, before drilling into per-target plots.</p>
+      <div class="shot-img"><img src="../img/one-stop-analysis-3.png" alt="Overview chart"></div>
+    </div>
+  </div>
+
+  <div class="shot" data-num="04">
+    <div class="shot-body">
+      <div class="shot-cap"><h3>Statistics without leaving the page</h3></div>
+      <p class="shot-desc">Two-Way ANOVA with post-hoc tests, descriptive statistics and significance markers, all rendered next to the data. Outliers, unbalanced groups and missing wells are flagged automatically — no R, no scripts, no copy-paste into a second tool.</p>
+      <div class="shot-img"><img src="../img/one-stop-analysis-4.png" alt="Statistics"></div>
+    </div>
+  </div>
+
+  <div class="shot" data-num="05">
+    <div class="shot-body">
+      <div class="shot-cap"><h3>Paste straight into Prism</h3></div>
+      <p class="shot-desc">One-click export to GraphPad Prism Grouped table layout, plus the merged table and stats summary as TSV. Replicate structure is preserved so error bars and post-hoc significance regenerate correctly inside Prism — no reformatting required.</p>
+      <div class="shot-img"><img src="../img/one-stop-analysis-5.png" alt="Export to Prism"></div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>Copyright &copy; 2026 Lin. All rights reserved.</footer>
+
+<script>
+(function(){
+  var top = document.querySelector('.top');
+  if (!top) return;
+  var anchor = document.querySelector('main') || top.parentElement;
+  if (!anchor) return;
+  var sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden','true');
+  sentinel.style.cssText = 'height:1px;width:1px;pointer-events:none;visibility:hidden';
+  anchor.insertBefore(sentinel, anchor.firstChild);
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ top.classList.toggle('condensed', !e.isIntersecting); });
+    }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+    io.observe(sentinel);
+  }
+})();
+</script>
+
+</body>
+</html>

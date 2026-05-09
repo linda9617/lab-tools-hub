@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cells-to-CT Designer · Lab Magic Hub</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="hero-shrink.js"></script>
+</head>
+<body>
+<header>
+  <div class="hdr-inner">
+    <a class="back-link" href="../index.html">← Back to Hub</a>
+    <span class="hdr-author">By ILYH</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">
+      <svg width="36" height="36" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="18" height="18" rx="3"/>
+        <circle cx="6"  cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="10" cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="14" cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="18" cy="6"  r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="6"  cy="10" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="10" cy="10" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="14" cy="10" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="18" cy="10" r="1.2" fill="currentColor" stroke="none"/>
+        <path d="M4 16 Q7 13 10 16 Q13 19 16 16" stroke-width="1.8"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <span class="hero-cat">Exp-design</span>
+      <h1>Cells-to-CT Designer</h1>
+      <p class="lede">Design end-to-end 2-step RT-qPCR experiments with the Power SYBR® Green Cells-to-Ct™ Kit. Generates cell seeding layouts, RT plate maps, and qPCR plate maps with reagent volume calculations.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://linda9617.github.io/cells-to-ct-designer/" target="_blank" rel="noopener">Run on GitHub</a>
+        <button type="button" class="btn btn-local" id="btnDownload"
+                data-url="https://raw.githubusercontent.com/linda9617/cells-to-ct-designer/main/index.html"
+                data-filename="Cells-to-CT Designer.html">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2><span class="num">1</span>How it works</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <span class="step-no">Step 1</span>
+      <h3>Define groups &amp; targets</h3>
+      <p>Enter cell-line / treatment groups, target genes, replicate counts and the housekeeping gene used for normalization.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 2</span>
+      <h3>Generate cell seeding plate</h3>
+      <p>The tool builds a 96-well cell-seeding map respecting your group / replicate layout, with edge-well exclusion options.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 3</span>
+      <h3>Build RT &amp; qPCR plate maps</h3>
+      <p>RT plate (96-well) and qPCR plate (96 or 384-well) are generated with mapped sources, reagent volumes per the Cells-to-Ct™ Kit protocol.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 4</span>
+      <h3>Export plate maps &amp; recipes</h3>
+      <p>Download CSV plate maps and a reagent recipe sheet (master mix per plate) ready for the bench.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Preview</h2>
+
+  <div class="screenshot" data-num="01">
+    <div class="screenshot-cap"><h3>Define groups, targets &amp; replicates</h3></div>
+    <div class="screenshot-desc">Enter cell-line / treatment groups, target genes and replicate counts; the tool calculates total well usage and warns when the layout exceeds plate capacity.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/cells-to-ct-designer-1.png" alt="Define groups, targets &amp; replicates"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="02">
+    <div class="screenshot-cap"><h3>RT plate maps</h3></div>
+    <div class="screenshot-desc">RT plate map are generated automatically with replicate grouping and optional edge-well exclusion.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/cells-to-ct-designer-2.png" alt="RT plate maps"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="03">
+    <div class="screenshot-cap"><h3>qPCR plate map &amp; reagent recipes</h3></div>
+    <div class="screenshot-desc">96 or 384-well qPCR plate map (top) with mapped sources, followed by the reagent volume recipe sheet (bottom) following the Cells-to-Ct™ Kit protocol. Export everything as CSV ready for the bench.</div>
+    <div class="screenshot-frame"><div class="screenshot-img dual"><img src="../img/cells-to-ct-designer-3.1.png" alt="qPCR plate map"><img src="../img/cells-to-ct-designer-3.2.png" alt="Reagent recipe sheet"></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('btnDownload');if(!btn)return;
+  btn.addEventListener('click',function(){
+    var url=btn.dataset.url,filename=btn.dataset.filename,orig=btn.textContent;
+    btn.textContent='Downloading…';btn.disabled=true;
+    fetch(url).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob();})
+      .then(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},10000);})
+      .catch(function(){alert('Download failed. Please try the GitHub link instead.');})
+      .finally(function(){btn.textContent=orig;btn.disabled=false;});
+  });
+})();
+</script>
+</body>
+</html>

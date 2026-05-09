@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Lab Calculator · Lab Magic Hub</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="hero-shrink.js"></script>
+</head>
+<body>
+<header>
+  <div class="hdr-inner">
+    <a class="back-link" href="../index.html">← Back to Hub</a>
+    <span class="hdr-author">By ILYH</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">
+      <svg width="36" height="36" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="14" height="18" rx="2"/>
+        <rect x="6.5" y="4.5" width="9" height="3.5" rx="0.6"/>
+        <circle cx="8"  cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="11" cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="14" cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="8"  cy="15"   r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="11" cy="15"   r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="14" cy="15"   r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="8"  cy="18"   r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="11" cy="18"   r="0.9" fill="currentColor" stroke="none"/>
+        <circle cx="14" cy="18"   r="0.9" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <span class="hero-cat">Analysis</span>
+      <h1>Easy Lab Calculator</h1>
+      <p class="lede">Six bench calculators in one tab strip: dilution &amp; C₁V₁=C₂V₂, mass↔molarity, buffer prep, stock dilution series, unit conversions, and cell &amp; protein helpers — every input has a unit selector and every result is copy-ready.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://linda9617.github.io/easy-lab-calculator/" target="_blank" rel="noopener">Run on GitHub</a>
+        <button type="button" class="btn btn-local" id="btnDownload"
+                data-url="https://raw.githubusercontent.com/linda9617/easy-lab-calculator/main/index.html"
+                data-filename="Easy Lab Calculator.html">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2><span class="num">1</span>How it works</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <span class="step-no">Step 1</span>
+      <h3>Pick a tab</h3>
+      <p>Six modules across the top: <code>Dilution</code>, <code>Mass↔Molarity</code>, <code>Buffer Prep</code>, <code>Stock Dilution Series</code>, <code>Unit Converter</code>, <code>Cell &amp; Protein</code>.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 2</span>
+      <h3>Enter values, pick units</h3>
+      <p>Each numeric field has a unit dropdown (M / mM / µM / nM; mg / µg / ng; mL / µL; °C). Common molecular weights are one-click chips.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 3</span>
+      <h3>Solve any missing variable</h3>
+      <p>Leave one field blank — dilution, mass↔molarity and Beer–Lambert solvers infer it from the rest, with the formula shown beneath.</p>
+    </div>
+    <div class="feature">
+      <span class="step-no">Step 4</span>
+      <h3>Copy recipe or table</h3>
+      <p>Generated buffer recipes, dilution series tables and converted values are copy-ready for protocol notes or a worksheet.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Preview</h2>
+
+  <div class="screenshot" data-num="01">
+    <div class="screenshot-cap"><h3>Dilution &amp; C₁V₁ = C₂V₂</h3></div>
+    <div class="screenshot-desc">Three solvers in one tab: stock+desired → dilution factor, DF+stock → final concentration with volumes, and the classic C₁V₁ = C₂V₂ “leave one blank” solver. Built-in serial dilution table generator handles starting concentration, fold and number of steps in one go.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/easy-lab-calculator-1.png" alt="Dilution &amp; C1V1 = C2V2"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="02">
+    <div class="screenshot-cap"><h3>Mass ↔ Molarity</h3></div>
+    <div class="screenshot-desc">Enter MW + any two of mass / volume / concentration; the fourth is solved automatically. A library of common molecular weights (NaCl, KCl, HEPES, IgG, ATP, antibiotics, cytokines…) fills the MW field with one click.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/easy-lab-calculator-2.png" alt="Mass ↔ Molarity"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="03">
+    <div class="screenshot-cap"><h3>Buffer prep assistant</h3></div>
+    <div class="screenshot-desc">Build a buffer component-by-component: name, MW, stock / purity, final concentration. One-click presets for 1× PBS, 1× TBS and HEPES buffer; mixed liquid (M / mM / µM / nM) and solid (→ mass to weigh) stocks are handled in the same table.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/easy-lab-calculator-3.png" alt="Buffer prep assistant"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="04">
+    <div class="screenshot-cap"><h3>Stock dilution series planner</h3></div>
+    <div class="screenshot-desc">Plan a full dose response: stock concentration, fold dilution, number of points, final volume per point and an optional “include 0” blank. Switch between serial (equal-fold) and direct dilution modes in a single dropdown.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/easy-lab-calculator-4.png" alt="Stock dilution series planner"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="05">
+    <div class="screenshot-cap"><h3>Unit converters</h3></div>
+    <div class="screenshot-desc">Concentration, volume, mass and temperature converters side by side — pick “From” unit, type a value, and every other unit updates simultaneously. No more juggling factors of 1000 in your head.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/easy-lab-calculator-5.png" alt="Unit converters"></div></div>
+  </div>
+
+  <div class="screenshot" data-num="06">
+    <div class="screenshot-cap"><h3>Cell &amp; protein helpers</h3></div>
+    <div class="screenshot-desc">Four bench staples in one tab: cell seeding (count + density + vessel), drug / compound dosing (stock → working volume), Beer–Lambert protein concentration from absorbance with built-in extinction coefficients (IgG, BSA, GFP…), and a 4-square hemocytometer counter.</div>
+    <div class="screenshot-frame"><div class="screenshot-img"><img src="../img/easy-lab-calculator-6.png" alt="Cell &amp; protein helpers"></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('btnDownload');if(!btn)return;
+  btn.addEventListener('click',function(){
+    var url=btn.dataset.url,filename=btn.dataset.filename,orig=btn.textContent;
+    btn.textContent='Downloading…';btn.disabled=true;
+    fetch(url).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob();})
+      .then(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},10000);})
+      .catch(function(){alert('Download failed. Please try the GitHub link instead.');})
+      .finally(function(){btn.textContent=orig;btn.disabled=false;});
+  });
+})();
+</script>
+</body>
+</html>
