@@ -5,92 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ILYH's Lab Magic Hub</title>
 <style>
-:root{--bg:#f0f4f8;--surface:#fff;--border:#d0d7e3;--primary:#1e4d8c;--primary-lt:#e8eef7;--primary-dk:#163a6b;--text:#1a2b3c;--muted:#6b7a8d;--green:#1a7a6e}
+:root{
+  --bg:#f7f8fa;
+  --surface:#fff;
+  --line:#e6e9ee;
+  --line-soft:#f0f2f5;
+  --text:#1a2332;
+  --muted:#6b7280;
+  --primary:#1e4d8c;
+  --primary-soft:#eef3fa;
+  --primary-dk:#163a6b;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:15px}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
 
-/* ── Header ── */
-header{background:var(--primary);color:#fff;padding:16px 28px 13px;box-shadow:0 2px 12px rgba(0,0,0,.24);position:sticky;top:0;z-index:50;transition:padding .22s ease,box-shadow .22s ease}
-.hdr-inner{max-width:900px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;transition:align-items .22s ease}
-.hdr-title{display:flex;align-items:center;gap:12px}
-header h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;transition:font-size .22s ease}
-header .sub{font-size:.8rem;opacity:.68;margin-top:3px;transition:opacity .18s ease,max-height .22s ease,margin-top .22s ease;overflow:hidden}
-header .author{font-size:.78rem;opacity:.56;align-self:flex-end}
+/* Blue sticky top bar — Back to nothing here (this IS the hub), shows author + condensed title on scroll */
+.top{background:var(--primary);color:#e6eef9;border-bottom:1px solid #163a6b;position:sticky;top:0;z-index:50}
+.top-inner{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:16px;min-height:52px;position:relative}
+.top-title{position:absolute;left:28px;right:120px;top:0;height:52px;line-height:52px;font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.2rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em;opacity:0;margin:0;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;pointer-events:none;transition:opacity .2s ease}
+.top.condensed .top-title{opacity:1}
+.top .author{color:#cfd9e8;font-size:.76rem;letter-spacing:.04em;position:absolute;right:28px;top:50%;transform:translateY(-50%);pointer-events:none}
 
-/* Header — condensed (after scrolling) */
-header.condensed{padding:8px 28px;box-shadow:0 3px 14px rgba(0,0,0,.32)}
-header.condensed .hdr-inner{align-items:center}
-header.condensed h1{font-size:1.05rem}
-header.condensed .sub{opacity:0;max-height:0;margin-top:0;pointer-events:none}
+/* Hero — white, NOT sticky */
+.hero{background:#fff;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:1100px;margin:0 auto;padding:64px 32px 48px}
+.hero h1{font-family:"Source Serif Pro","Charter","Iowan Old Style",Georgia,serif;font-size:2.45rem;font-weight:600;letter-spacing:-.014em;line-height:1.16;margin-bottom:14px;color:var(--text);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.hero .lede{font-size:1rem;color:var(--muted);max-width:680px;line-height:1.65}
 
-/* ── Main ── */
-main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-direction:column;gap:18px}
+/* Main */
+main{max-width:1100px;margin:0 auto;padding:40px 32px 80px;display:flex;flex-direction:column;gap:26px}
 
-/* ── Per-card action buttons ── */
-.card-actions{margin-top:4px;display:flex;gap:7px;flex-wrap:wrap}
-.card-actions .btn-v{flex:1;text-align:center}
-
-/* ── Filter bar ── */
-.filter-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.search-wrap{position:relative;flex:1;min-width:180px}
-.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted)}
-.search-input{width:100%;padding:8px 12px 8px 34px;border:1px solid var(--border);border-radius:8px;font-size:.87rem;background:var(--surface);color:var(--text);transition:border-color .15s,box-shadow .15s}
-.search-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(30,77,140,.10)}
+/* Filter bar */
+.filter-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:-6px}
+.search-wrap{position:relative;flex:1;min-width:220px;max-width:360px}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted)}
+.search-input{width:100%;padding:10px 14px 10px 36px;border:1px solid var(--line);border-radius:8px;font-size:.88rem;font-family:inherit;background:var(--surface);color:var(--text);transition:border-color .15s,box-shadow .15s}
+.search-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(30,77,140,.12)}
 .cat-chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{padding:5px 13px;border:1px solid var(--border);border-radius:20px;font-size:.8rem;font-weight:500;background:var(--surface);color:var(--muted);cursor:pointer;transition:all .14s;white-space:nowrap}
+.chip{padding:6px 14px;border:1px solid var(--line);border-radius:20px;font-size:.81rem;font-weight:500;font-family:inherit;background:var(--surface);color:var(--muted);cursor:pointer;transition:all .14s;white-space:nowrap}
 .chip.active{background:var(--primary);border-color:var(--primary);color:#fff}
-.chip:not(.active):hover{background:var(--primary-lt);border-color:var(--primary);color:var(--primary)}
+.chip:not(.active):hover{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
 
-/* ── Tool grid ── */
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
-.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px 17px;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:11px;transition:box-shadow .2s,translate .15s}
-.tool-card:hover{box-shadow:0 7px 24px rgba(30,77,140,.14);translate:0 -2px}
+/* Tool grid */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.tool-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:22px 24px 18px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:border-color .18s,box-shadow .18s,translate .18s}
+.tool-card:hover{border-color:var(--line);box-shadow:0 4px 16px rgba(30,77,140,.08);translate:0 -2px}
 .tool-card.clickable{cursor:pointer}
-.tool-card.clickable:hover{border-color:var(--primary);box-shadow:0 9px 26px rgba(30,77,140,.18)}
-.tool-card.clickable:active{translate:0 0;background:var(--primary-lt);transition:none}
+.tool-card.clickable:hover{border-color:var(--primary)}
+.tool-card.clickable:active{background:var(--primary-soft);transition:none}
 .tool-card.hidden{display:none}
-.card-top{display:flex;gap:13px;align-items:flex-start}
-.tool-icon{width:44px;height:44px;border-radius:10px;background:var(--primary-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary)}
-.tool-name{font-size:.97rem;font-weight:700;line-height:1.2;margin-bottom:4px}
+.card-top{display:flex;gap:14px;align-items:flex-start}
+.tool-icon{width:46px;height:46px;border-radius:11px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary);border:1px solid #dde7f4}
+.tool-name{font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.18rem;font-weight:600;color:var(--text);line-height:1.25;letter-spacing:-.008em;margin-bottom:5px}
 .tool-name a{color:inherit;text-decoration:none}
-.tool-name a:hover{color:var(--primary);text-decoration:underline}
-.tool-cat{display:inline-block;font-size:.71rem;font-weight:600;color:var(--primary);background:var(--primary-lt);border-radius:4px;padding:2px 7px;letter-spacing:.01em}
-.tool-desc{font-size:.83rem;color:var(--muted);line-height:1.58}
+.tool-cat{display:inline-block;font-size:.7rem;font-weight:600;color:var(--primary);background:var(--primary-soft);border-radius:4px;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase}
+.tool-desc{font-size:.86rem;color:var(--muted);line-height:1.62}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap}
-.tag{font-size:.72rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--muted)}
-.btn-v{padding:6px 14px;border:none;border-radius:7px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .14s,box-shadow .14s,translate .1s,opacity .14s}
-.btn-v:hover{translate:0 -2px}
-.btn-v:active{translate:0 1px;box-shadow:none!important}
-.btn-pub{background:transparent;color:var(--primary);border:1.5px solid var(--primary);box-shadow:none}
-.btn-pub:hover{background:var(--primary-lt)}
-.btn-local{background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(26,122,110,.22)}
-.btn-local:hover{background:#155f55;box-shadow:0 5px 12px rgba(26,122,110,.32)}
+.tag{font-size:.72rem;background:var(--bg);border:1px solid var(--line-soft);border-radius:4px;padding:2px 8px;color:var(--muted)}
+
+/* Buttons — three-tier hierarchy from info-page (uniform width, calmer than before) */
+.card-actions{margin-top:6px;display:flex;gap:8px;flex-wrap:wrap}
+.btn-v{flex:1;min-width:90px;text-align:center;font-family:inherit;font-size:.82rem;font-weight:600;line-height:1;cursor:pointer;border:1px solid transparent;padding:10px 14px;border-radius:8px;transition:all .15s}
+.btn-pub{background:var(--primary);color:#fff;box-shadow:0 1px 2px rgba(30,77,140,.18)}
+.btn-pub:hover{background:var(--primary-dk);box-shadow:0 3px 8px rgba(30,77,140,.24)}
+.btn-pub:active{translate:0 1px}
+.btn-local{background:transparent;color:var(--muted);border-color:transparent}
+.btn-local:hover{color:var(--text);background:var(--line-soft)}
+.btn-local:active{color:var(--primary)}
+.btn-v:disabled{opacity:.5;cursor:wait}
 
 /* No results */
-.no-results{display:none;text-align:center;padding:52px 20px;color:var(--muted);font-size:.92rem}
+.no-results{display:none;text-align:center;padding:52px 20px;color:var(--muted);font-size:.92rem;background:var(--surface);border:1px dashed var(--line);border-radius:14px}
 .no-results svg{display:block;margin:0 auto 12px;opacity:.35}
 
-/* ── Footer ── */
-.copyright{position:fixed;bottom:0;left:0;right:0;text-align:center;font-size:.75rem;color:var(--muted);background:rgba(240,244,248,.95);backdrop-filter:blur(4px);padding:7px 12px;border-top:1px solid var(--border);z-index:100}
+/* Footer — non-sticky, matches info pages */
+footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;text-align:center}
 
-@media(max-width:520px){
+@media (max-width:680px){
+  .top-title{display:none}
+  .hero-inner{padding:42px 22px 36px}
+  .hero h1{font-size:1.85rem}
+  main{padding:32px 22px 60px}
   .tool-grid{grid-template-columns:1fr}
-  .hdr-inner{flex-direction:column;align-items:flex-start}
+  .card-actions{flex-direction:column}
+  .btn-v{flex:none}
 }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="hdr-inner">
-    <div class="hdr-title">
-      <div>
-        <h1>ILYH's Lab Magic Hub</h1>
-        <p class="sub">Biology data processing &amp; automation tools</p>
-      </div>
-    </div>
+<div class="top">
+  <div class="top-inner">
+    <span class="top-title">ILYH's Lab Magic Hub</span>
     <span class="author">By ILYH</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>ILYH's Lab Magic Hub</h1>
+    <p class="lede">A curated set of in-browser tools for biology data processing, experiment design, lab automation, and quick debugging — every tool runs locally, no upload required.</p>
   </div>
 </header>
 
@@ -120,10 +135,10 @@ main{max-width:900px;margin:0 auto;padding:26px 18px 100px;display:flex;flex-dir
 
 </main>
 
-<footer class="copyright">Copyright &copy; 2026 Lin. All rights reserved.</footer>
+<footer>Copyright &copy; 2026 Lin. All rights reserved.</footer>
 
 <script>
-// ── Tool definitions ──────────────────────────────────────────────────────────
+// ── Tool definitions (identical to lab-tools-hub_nn.html) ────────────────────
 const TOOLS = [
   {
     id: 'plate',
@@ -333,7 +348,6 @@ const TOOLS = [
 let currentCat = 'all';
 let searchText = '';
 
-// ── Build cards ───────────────────────────────────────────────────────────────
 function buildCards() {
   const grid = document.getElementById('toolGrid');
   grid.innerHTML = '';
@@ -354,7 +368,7 @@ function buildCards() {
       <div class="tool-desc">${tool.desc}</div>
       <div class="card-tags">${tool.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       <div class="card-actions">
-        <button type="button" class="btn-v btn-pub" data-id="${tool.id}" data-ver="public">Github</button>
+        <button type="button" class="btn-v btn-pub" data-id="${tool.id}" data-ver="public">GitHub</button>
         <button type="button" class="btn-v btn-local" data-id="${tool.id}" data-ver="local">Download</button>
       </div>`;
     grid.appendChild(card);
@@ -371,7 +385,6 @@ function buildCards() {
   applyFilter();
 }
 
-// ── Launch / download ─────────────────────────────────────────────────────────
 function launch(id, ver) {
   const tool = TOOLS.find(t => t.id === id);
   if (!tool) return;
@@ -390,14 +403,13 @@ function launch(id, ver) {
         document.body.removeChild(a);
         setTimeout(() => URL.revokeObjectURL(a.href), 10000);
       })
-      .catch(() => { alert('Download failed. Please try the Github link instead.'); })
+      .catch(() => { alert('Download failed. Please try the GitHub link instead.'); })
       .finally(() => { if (btn) { btn.textContent = 'Download'; btn.disabled = false; } });
   } else {
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 }
 
-// ── Filter ────────────────────────────────────────────────────────────────────
 function applyFilter() {
   const cards = document.querySelectorAll('.tool-card');
   let visible = 0;
@@ -411,7 +423,6 @@ function applyFilter() {
   document.getElementById('noResults').style.display = visible === 0 ? '' : 'none';
 }
 
-// ── Event listeners ───────────────────────────────────────────────────────────
 document.getElementById('catChips').addEventListener('click', e => {
   const chip = e.target.closest('.chip');
   if (!chip) return;
@@ -425,13 +436,13 @@ document.getElementById('searchInput').addEventListener('input', e => {
   applyFilter();
 });
 
-// ── Init ──────────────────────────────────────────────────────────────────────
 buildCards();
-// ── Condensed sticky header on scroll ────────────────────────────────
+
+// ── Condensed sticky top bar on scroll (mirrors info-page behavior) ──────────
 (function(){
-  var hdr = document.querySelector('header');
-  if (!hdr) return;
-  var anchor = document.querySelector('main') || hdr.parentElement;
+  var top = document.querySelector('.top');
+  if (!top) return;
+  var anchor = document.querySelector('main') || top.parentElement;
   if (!anchor) return;
   var sentinel = document.createElement('div');
   sentinel.setAttribute('aria-hidden','true');
@@ -439,19 +450,11 @@ buildCards();
   anchor.insertBefore(sentinel, anchor.firstChild);
   if ('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ hdr.classList.toggle('condensed', !e.isIntersecting); });
+      entries.forEach(function(e){ top.classList.toggle('condensed', !e.isIntersecting); });
     }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
     io.observe(sentinel);
-  } else {
-    var condensed=false, ticking=false;
-    function upd(){ var y=window.scrollY||0;
-      if (!condensed && y>80){ condensed=true; hdr.classList.add('condensed'); }
-      else if (condensed && y<24){ condensed=false; hdr.classList.remove('condensed'); }
-      ticking=false;
-    }
-    window.addEventListener('scroll',function(){ if(!ticking){requestAnimationFrame(upd); ticking=true;} },{passive:true});
-    upd();
   }
-})();</script>
+})();
+</script>
 </body>
 </html>
