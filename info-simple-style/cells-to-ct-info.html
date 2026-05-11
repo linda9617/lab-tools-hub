@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +19,7 @@
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 
-/* Blue sticky top bar — carries Back + author normally; gains title + actions when scrolled past hero */
+/* Blue sticky top bar –carries Back + author normally; gains title + actions when scrolled past hero */
 .top{background:var(--primary);color:#e6eef9;border-bottom:1px solid #163a6b;position:sticky;top:0;z-index:50}
 .top-inner{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:16px;min-height:52px;position:relative}
 .top a.back{color:#cfd6df;text-decoration:none;font-size:.84rem;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border-radius:7px;flex-shrink:0;transition:background .15s,color .15s}
@@ -28,12 +28,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .top a.back:hover svg{translate:-2px 0}
 .top .author{color:#cfd9e8;font-size:.76rem;letter-spacing:.04em;position:absolute;right:28px;top:50%;transform:translateY(-50%);pointer-events:none}
 
-/* Title + actions in top bar — only visible when .top.condensed */
+/* Title + actions in top bar –only visible when .top.condensed */
 .top-title{position:absolute;left:120px;right:430px;top:0;height:52px;line-height:52px;font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.2rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em;opacity:0;margin:0;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;pointer-events:none;transition:opacity .2s ease}
 .top-actions{display:flex;gap:8px;flex-shrink:0;opacity:0;width:0;overflow:hidden;margin-left:auto;margin-right:90px;transition:opacity .2s ease}
 .top-actions .btn{padding:7px 13px;font-size:.78rem;min-width:0;border-radius:7px;line-height:1}
-.top-actions .btn-primary{background:var(--primary);color:#fff;border-color:transparent;box-shadow:none}
-.top-actions .btn-primary:hover{background:#2a63aa}
+.top-actions .btn-primary{background:#fff;color:var(--primary);border-color:transparent;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.top-actions .btn-primary:hover{background:#f0f4fb}
 .top-actions .btn-ghost{background:transparent;color:#e6e9ee;border-color:rgba(255,255,255,.22)}
 .top-actions .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
 .top-actions .btn-text{background:transparent;color:#cfd6df;border-color:transparent}
@@ -44,7 +44,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   .top.condensed .top-title{display:none}
 }
 
-/* Hero — white, NOT sticky, slightly taller */
+/* Hero –white, NOT sticky, slightly taller */
 .hero{background:#fff;border-bottom:1px solid var(--line)}
 .hero-inner{max-width:1100px;margin:0 auto;padding:64px 32px 56px;display:flex;gap:36px;align-items:flex-start}
 .hero-icon{flex-shrink:0;width:80px;height:80px;border-radius:18px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;border:1px solid #dde7f4}
@@ -56,7 +56,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .hero .lede{font-size:1rem;color:var(--muted);max-width:680px;line-height:1.65}
 .hero-actions{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
 
-/* Buttons — refined three-tier hierarchy, uniform width */
+/* Buttons –refined three-tier hierarchy, uniform width */
 .btn{font-family:inherit;font-size:.85rem;font-weight:600;text-decoration:none;line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;border:1px solid transparent;padding:11px 16px;border-radius:8px;min-width:108px;transition:all .15s}
 .btn .arr{font-size:.85em;transition:translate .18s}
 .btn:hover .arr{translate:2px 0}
@@ -75,7 +75,7 @@ main{max-width:1100px;margin:0 auto;padding:48px 32px 80px}
 section{margin-bottom:64px}
 section:last-child{margin-bottom:0}
 
-/* Section header — quiet number + subtle title rule */
+/* Section header –quiet number + subtle title rule */
 .title{margin-bottom:28px}
 .title-row{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
 .title-num{font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.55rem;font-weight:500;color:var(--primary);opacity:.55;letter-spacing:-.005em;line-height:1}
@@ -87,7 +87,7 @@ section:last-child{margin-bottom:0}
 .intro li{padding-left:22px;position:relative;color:var(--text);font-size:.96rem;line-height:1.65;opacity:.88}
 .intro li::before{content:"";position:absolute;left:4px;top:.65em;width:8px;height:8px;border-radius:2px;background:var(--primary);opacity:.7;rotate:45deg}
 
-/* How it works — cards with permanent left accent, no hover effect */
+/* How it works –cards with permanent left accent, no hover effect */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
 .step{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:20px 22px;position:relative;overflow:hidden}
 .step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--primary)}
@@ -95,7 +95,7 @@ section:last-child{margin-bottom:0}
 .step h3{font-size:.96rem;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.005em}
 .step p{font-size:.86rem;color:var(--muted);line-height:1.6}
 
-/* Screenshots — soft cards with side numeral, magazine-ish but quieter */
+/* Screenshots –soft cards with side numeral, magazine-ish but quieter */
 .shot{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:26px 28px;margin-bottom:22px;position:relative;overflow:hidden}
 .shot::before{content:attr(data-num);position:absolute;top:-44px;right:14px;font-size:11rem;font-weight:900;color:var(--primary);opacity:.07;line-height:1;font-family:Georgia,"Times New Roman",serif;pointer-events:none;letter-spacing:-.05em}
 .shot:last-child{margin-bottom:0}
@@ -129,8 +129,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
     </a>
     <span class="top-title">Cells-to-CT Designer</span>
     <div class="top-actions">
-      <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/cells-to-ct-designer/" target="_blank" rel="noopener">Datalab</a>
-      <a class="btn btn-ghost" href="https://linda9617.github.io/cells-to-ct-designer/" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://linda9617.github.io/cells-to-ct-designer/" target="_blank" rel="noopener">Run on GitHub</a>
       <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/cells-to-ct-designer/main/index.html" download="Cells-to-CT Designer.html">Download</a>
     </div>
     <span class="author">By ILYH</span>
@@ -157,8 +156,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
       <span class="hero-cat">Exp-design</span>
       <h1>Cells-to-CT Designer</h1>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/cells-to-ct-designer/" target="_blank" rel="noopener">Datalab</a>
-        <a class="btn btn-ghost" href="https://linda9617.github.io/cells-to-ct-designer/" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://linda9617.github.io/cells-to-ct-designer/" target="_blank" rel="noopener">Run on GitHub</a>
         <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/cells-to-ct-designer/main/index.html" download="Cells-to-CT Designer.html">Download</a>
       </div>
     </div>
@@ -176,7 +174,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
     <div class="title-rule"></div>
   </div>
   <ul>
-    <li>Designs end-to-end 2-step RT-qPCR experiments with the Power SYBR® Green Cells-to-Ct™ Kit.</li>
+    <li>Designs end-to-end 2-step RT-qPCR experiments with the Power SYBR® Green Cells-to-Ct™Kit.</li>
     <li>Generates cell seeding layouts, RT plate maps, and qPCR plate maps.</li>
     <li>Automates reagent volume calculations per the kit protocol.</li>
   </ul>
@@ -256,3 +254,10 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
 
 </body>
 </html>
+
+
+
+
+
+
+

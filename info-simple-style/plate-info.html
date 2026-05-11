@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Plate Map ↔ List Converter · Lab Magic Hub</title>
+<title>Plate Map ↔List Converter · Lab Magic Hub</title>
 <style>
 :root{
   --bg:#f7f8fa;
@@ -30,8 +30,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .top-title{position:absolute;left:120px;right:430px;top:0;height:52px;line-height:52px;font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.2rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em;opacity:0;margin:0;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;pointer-events:none;transition:opacity .2s ease}
 .top-actions{display:flex;gap:8px;flex-shrink:0;opacity:0;width:0;overflow:hidden;margin-left:auto;margin-right:90px;transition:opacity .2s ease}
 .top-actions .btn{padding:7px 13px;font-size:.78rem;min-width:0;border-radius:7px;line-height:1}
-.top-actions .btn-primary{background:var(--primary);color:#fff;border-color:transparent;box-shadow:none}
-.top-actions .btn-primary:hover{background:#2a63aa}
+.top-actions .btn-primary{background:#fff;color:var(--primary);border-color:transparent;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.top-actions .btn-primary:hover{background:#f0f4fb}
 .top-actions .btn-ghost{background:transparent;color:#e6e9ee;border-color:rgba(255,255,255,.22)}
 .top-actions .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
 .top-actions .btn-text{background:transparent;color:#cfd6df;border-color:transparent}
@@ -113,10 +113,9 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,3 4,8 10,13"/></svg>
       <span>Back</span>
     </a>
-    <span class="top-title">Plate Map ↔ List Converter</span>
+    <span class="top-title">Plate Map ↔List Converter</span>
     <div class="top-actions">
-      <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/plate-map-list-converter/" target="_blank" rel="noopener">Datalab</a>
-      <a class="btn btn-ghost" href="https://linda9617.github.io/plate-map-list-converter/" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://linda9617.github.io/plate-map-list-converter/" target="_blank" rel="noopener">Run on GitHub</a>
       <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/plate-map-list-converter/main/index.html" download="Plate Map List Converter.html">Download</a>
     </div>
     <span class="author">By ILYH</span>
@@ -135,10 +134,9 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
     </div>
     <div class="hero-text">
       <span class="hero-cat">Analysis</span>
-      <h1>Plate Map ↔ List Converter</h1>
+      <h1>Plate Map ↔List Converter</h1>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/plate-map-list-converter/" target="_blank" rel="noopener">Datalab</a>
-        <a class="btn btn-ghost" href="https://linda9617.github.io/plate-map-list-converter/" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://linda9617.github.io/plate-map-list-converter/" target="_blank" rel="noopener">Run on GitHub</a>
         <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/plate-map-list-converter/main/index.html" download="Plate Map List Converter.html">Download</a>
       </div>
     </div>
@@ -172,7 +170,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
   </div>
   <div class="steps">
     <div class="step"><span class="n">Step 1</span><h3>Upload plate map or list</h3><p>Drop a CSV/Excel file in either matrix (rows × columns) or long-list (well, value) layout. The format is auto-detected.</p></div>
-    <div class="step"><span class="n">Step 2</span><h3>Pick plate format &amp; direction</h3><p>Choose 96-well or 384-well; toggle map → list or list → map. Custom templates can be saved for re-use.</p></div>
+    <div class="step"><span class="n">Step 2</span><h3>Pick plate format &amp; direction</h3><p>Choose 96-well or 384-well; toggle map ↔list or list ↔map. Custom templates can be saved for re-use.</p></div>
     <div class="step"><span class="n">Step 3</span><h3>Preview &amp; validate</h3><p>Inspect the converted output side-by-side with the input; missing wells and duplicate IDs are highlighted before export.</p></div>
     <div class="step"><span class="n">Step 4</span><h3>Export CSV / Excel</h3><p>Copy to clipboard, or download as CSV / Excel for downstream pipeline use.</p></div>
   </div>
@@ -222,3 +220,10 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
 
 </body>
 </html>
+
+
+
+
+
+
+

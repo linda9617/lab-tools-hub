@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -30,8 +30,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .top-title{position:absolute;left:120px;right:430px;top:0;height:52px;line-height:52px;font-family:"Source Serif Pro",Charter,Georgia,serif;font-size:1.2rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em;opacity:0;margin:0;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;pointer-events:none;transition:opacity .2s ease}
 .top-actions{display:flex;gap:8px;flex-shrink:0;opacity:0;width:0;overflow:hidden;margin-left:auto;margin-right:90px;transition:opacity .2s ease}
 .top-actions .btn{padding:7px 13px;font-size:.78rem;min-width:0;border-radius:7px;line-height:1}
-.top-actions .btn-primary{background:var(--primary);color:#fff;border-color:transparent;box-shadow:none}
-.top-actions .btn-primary:hover{background:#2a63aa}
+.top-actions .btn-primary{background:#fff;color:var(--primary);border-color:transparent;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.top-actions .btn-primary:hover{background:#f0f4fb}
 .top-actions .btn-ghost{background:transparent;color:#e6e9ee;border-color:rgba(255,255,255,.22)}
 .top-actions .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
 .top-actions .btn-text{background:transparent;color:#cfd6df;border-color:transparent}
@@ -115,8 +115,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
     </a>
     <span class="top-title">Easy Lab Calculator</span>
     <div class="top-actions">
-      <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/easy-lab-calculator/" target="_blank" rel="noopener">Datalab</a>
-      <a class="btn btn-ghost" href="https://linda9617.github.io/easy-lab-calculator/" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://linda9617.github.io/easy-lab-calculator/" target="_blank" rel="noopener">Run on GitHub</a>
       <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/easy-lab-calculator/main/index.html" download="Easy Lab Calculator.html">Download</a>
     </div>
     <span class="author">By ILYH</span>
@@ -144,8 +143,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
       <span class="hero-cat">Analysis</span>
       <h1>Easy Lab Calculator</h1>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://datalab.corp.novocorp.net/apps/ilyh/easy-lab-calculator/" target="_blank" rel="noopener">Datalab</a>
-        <a class="btn btn-ghost" href="https://linda9617.github.io/easy-lab-calculator/" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://linda9617.github.io/easy-lab-calculator/" target="_blank" rel="noopener">Run on GitHub</a>
         <a class="btn btn-text" href="https://raw.githubusercontent.com/linda9617/easy-lab-calculator/main/index.html" download="Easy Lab Calculator.html">Download</a>
       </div>
     </div>
@@ -163,7 +161,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
     <div class="title-rule"></div>
   </div>
   <ul>
-    <li>Six linked bench calculators: dilution, mass↔molarity, buffer prep, serial dilution, unit conversion, cell &amp; protein helpers.</li>
+    <li>Six linked bench calculators: dilution, mass↔Molarity, buffer prep, serial dilution, unit conversion, cell &amp; protein helpers.</li>
     <li>Every numeric input has a unit selector; solvers infer missing variables from any complete equation.</li>
     <li>All recipes, tables and converted values are copy-ready for protocols and worksheets.</li>
   </ul>
@@ -179,8 +177,8 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
   </div>
   <div class="steps">
     <div class="step"><span class="n">Step 1</span><h3>Pick a tab</h3><p>Six modules across the top: Dilution, Mass↔Molarity, Buffer Prep, Stock Dilution Series, Unit Converter, Cell &amp; Protein.</p></div>
-    <div class="step"><span class="n">Step 2</span><h3>Enter values, pick units</h3><p>Each numeric field has a unit dropdown (M / mM / µM / nM; mg / µg / ng; mL / µL; °C). Common molecular weights are one-click chips.</p></div>
-    <div class="step"><span class="n">Step 3</span><h3>Solve any missing variable</h3><p>Leave one field blank — dilution, mass↔molarity and Beer–Lambert solvers infer it from the rest, with the formula shown beneath.</p></div>
+    <div class="step"><span class="n">Step 2</span><h3>Enter values, pick units</h3><p>Each numeric field has a unit dropdown (M / mM / μM / nM; mg / μg / ng; mL / μL; °C). Common molecular weights are one-click chips.</p></div>
+    <div class="step"><span class="n">Step 3</span><h3>Solve any missing variable</h3><p>Leave one field blank –dilution, mass↔Molarity and Beer–Lambert solvers infer it from the rest, with the formula shown beneath.</p></div>
     <div class="step"><span class="n">Step 4</span><h3>Copy recipe or table</h3><p>Generated buffer recipes, dilution series tables and converted values are copy-ready for protocol notes or a worksheet.</p></div>
   </div>
 </section>
@@ -196,16 +194,16 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
 
   <div class="shot" data-num="01">
     <div class="shot-body">
-      <div class="shot-cap"><h3>Dilution &amp; C₁V₁ = C₂V₂/h3></div>
-      <p class="shot-desc">Three solvers in one tab: stock + desired → dilution factor, DF + stock → final concentration with volumes, and the classic C₁V₁ = C₂V₂"leave one blank" solver. Built-in serial dilution table generator handles starting concentration, fold and number of steps in one go.</p>
+      <div class="shot-cap"><h3>Dilution &amp; C₁V₁ = C₂V₂</h3></div>
+      <p class="shot-desc">Three solvers in one tab: stock + desired ↔dilution factor, DF + stock ↔final concentration with volumes, and the classic C₁V₁ = C₂V₂ leave one blank" solver. Built-in serial dilution table generator handles starting concentration, fold and number of steps in one go.</p>
       <div class="shot-img"><img src="../img/easy-lab-calculator-1.png" alt="Dilution"></div>
     </div>
   </div>
 
   <div class="shot" data-num="02">
     <div class="shot-body">
-      <div class="shot-cap"><h3>Mass ↔ Molarity</h3></div>
-      <p class="shot-desc">Enter MW + any two of mass / volume / concentration; the fourth is solved automatically. A library of common molecular weights (NaCl, KCl, HEPES, IgG, ATP, antibiotics, cytokines… fills the MW field with one click.</p>
+      <div class="shot-cap"><h3>Mass ↔Molarity</h3></div>
+      <p class="shot-desc">Enter MW + any two of mass / volume / concentration; the fourth is solved automatically. A library of common molecular weights (NaCl, KCl, HEPES, IgG, ATP, antibiotics, cytokines–fills the MW field with one click.</p>
       <div class="shot-img"><img src="../img/easy-lab-calculator-2.png" alt="Mass to Molarity"></div>
     </div>
   </div>
@@ -213,7 +211,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
   <div class="shot" data-num="03">
     <div class="shot-body">
       <div class="shot-cap"><h3>Buffer prep assistant</h3></div>
-      <p class="shot-desc">Build a buffer component-by-component: name, MW, stock / purity, final concentration. One-click presets for 1× PBS, 1× TBS and HEPES buffer; mixed liquid (M / mM / µM / nM) and solid (↔mass to weigh) stocks are handled in the same table.</p>
+      <p class="shot-desc">Build a buffer component-by-component: name, MW, stock / purity, final concentration. One-click presets for 1× PBS, 1× TBS and HEPES buffer; mixed liquid (M / mM / μM / nM) and solid (↔Mass to weigh) stocks are handled in the same table.</p>
       <div class="shot-img"><img src="../img/easy-lab-calculator-3.png" alt="Buffer prep"></div>
     </div>
   </div>
@@ -229,7 +227,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
   <div class="shot" data-num="05">
     <div class="shot-body">
       <div class="shot-cap"><h3>Unit converters</h3></div>
-      <p class="shot-desc">Concentration, volume, mass and temperature converters side by side — pick "From" unit, type a value, and every other unit updates simultaneously. No more juggling factors of 1000 in your head.</p>
+      <p class="shot-desc">Concentration, volume, mass and temperature converters side by side –pick "From" unit, type a value, and every other unit updates simultaneously. No more juggling factors of 1000 in your head.</p>
       <div class="shot-img"><img src="../img/easy-lab-calculator-5.png" alt="Unit converters"></div>
     </div>
   </div>
@@ -237,7 +235,7 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
   <div class="shot" data-num="06">
     <div class="shot-body">
       <div class="shot-cap"><h3>Cell &amp; protein helpers</h3></div>
-      <p class="shot-desc">Four bench staples in one tab: cell seeding (count + density + vessel), drug / compound dosing (stock → working volume), Beer–Lambert protein concentration from absorbance with built-in extinction coefficients (IgG, BSA, GFP…, and a 4-square hemocytometer counter.</p>
+      <p class="shot-desc">Four bench staples in one tab: cell seeding (count + density + vessel), drug / compound dosing (stock ↔working volume), Beer–Lambert protein concentration from absorbance with built-in extinction coefficients (IgG, BSA, GFP– and a 4-square hemocytometer counter.</p>
       <div class="shot-img"><img src="../img/easy-lab-calculator-6.png" alt="Cell and protein helpers"></div>
     </div>
   </div>
@@ -269,3 +267,10 @@ footer{max-width:1100px;margin:0 auto;padding:28px 32px;border-top:1px solid var
 
 </body>
 </html>
+
+
+
+
+
+
+
